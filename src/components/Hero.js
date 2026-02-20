@@ -9,7 +9,7 @@ import {
 
 export default function Hero() {
   return (
-    <section className="flex min-h-screen w-full items-center bg-gray-900 px-6 pb-8 pt-6 md:py-20 lg:py-32">
+    <section className="flex min-h-screen w-full items-center bg-background px-6 pb-8 pt-6 md:py-20 lg:py-32">
       <div className="container mx-auto flex max-w-[64rem] flex-col items-center gap-4 text-center">
         {/* Profile image: replace src with your photo in public/ (e.g. public/profile.jpg) */}
         <div className="-mt-20 mb-0 flex h-24 w-24 items-center justify-center overflow-hidden rounded-full border-4 border-indigo-500 bg-indigo-500/20 md:mb-2 md:h-40 md:w-40">
