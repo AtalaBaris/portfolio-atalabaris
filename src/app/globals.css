@@ -5,10 +5,13 @@
   - :root = koyu tema (varsayılan).
   - html.light = açık tema (JS ile eklenir/kaldırılır).
   - "System" seçilince JS, prefers-color-scheme'e göre .light ekler/kaldırır.
+  - data-accent = buton/link vurgu rengi (indigo, red, cyan, green, amber, violet, rose).
 */
 :root {
   --background: #111827; /* gray-900 */
   --foreground: #ffffff;
+  --accent: #6366f1;
+  --accent-foreground: #ffffff;
 }
 
 html.light {
@@ -16,9 +19,20 @@ html.light {
   --foreground: #111827;
 }
 
+/* Renk modları: buton ve link vurgusu (html üzerinde set edilir) */
+html[data-accent="indigo"] { --accent: #6366f1; --accent-foreground: #ffffff; }
+html[data-accent="red"] { --accent: #dc2626; --accent-foreground: #ffffff; }
+html[data-accent="cyan"] { --accent: #0891b2; --accent-foreground: #ffffff; }
+html[data-accent="green"] { --accent: #16a34a; --accent-foreground: #ffffff; }
+html[data-accent="amber"] { --accent: #d97706; --accent-foreground: #ffffff; }
+html[data-accent="violet"] { --accent: #7c3aed; --accent-foreground: #ffffff; }
+html[data-accent="rose"] { --accent: #e11d48; --accent-foreground: #ffffff; }
+
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
 }
@@ -28,3 +42,13 @@ body {
   color: var(--foreground);
   font-family: var(--font-sans), system-ui, sans-serif;
 }
+
+/* Accent renkleri: Tailwind bazen var() üretmeyebildiği için doğrudan sınıflar */
+.bg-accent { background-color: var(--accent); }
+.text-accent { color: var(--accent); }
+.text-accent-foreground { color: var(--accent-foreground); }
+.border-accent { border-color: var(--accent); }
+.ring-accent { --tw-ring-color: var(--accent); }
+.bg-accent\/20 { background-color: color-mix(in srgb, var(--accent) 20%, transparent); }
+.hover\:text-accent:hover { color: var(--accent); }
+.focus-visible\:ring-accent:focus-visible { --tw-ring-color: var(--accent); }

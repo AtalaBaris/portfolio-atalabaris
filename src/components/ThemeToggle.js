@@ -1,7 +1,6 @@
 'use client'
 
-import { useState, useEffect } from 'react'
-import { useRef } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import {
   SunIcon,
   MoonIcon,
@@ -10,11 +9,22 @@ import {
 } from '@heroicons/react/24/outline'
 
 const STORAGE_KEY = 'theme'
-const THEMES = [
-  
+const ACCENT_KEY = 'accent'
+
+const APPEARANCE = [
   { value: 'dark', label: 'Dark', Icon: MoonIcon },
   { value: 'light', label: 'Light', Icon: SunIcon },
   { value: 'system', label: 'System', Icon: ComputerDesktopIcon },
+]
+
+const ACCENTS = [
+  { value: 'indigo', label: 'Indigo', color: '#6366f1' },
+  { value: 'red', label: 'Red', color: '#dc2626' },
+  { value: 'cyan', label: 'Cyan', color: '#0891b2' },
+  { value: 'green', label: 'Green', color: '#16a34a' },
+  { value: 'amber', label: 'Amber', color: '#d97706' },
+  { value: 'violet', label: 'Violet', color: '#7c3aed' },
+  { value: 'rose', label: 'Rose', color: '#e11d48' },
 ]
 
 function getSystemDark() {
@@ -32,21 +42,27 @@ function applyTheme(theme) {
   }
 }
 
+function applyAccent(accent) {
+  document.documentElement.setAttribute('data-accent', accent)
+}
+
 export default function ThemeToggle() {
   const [theme, setThemeState] = useState('dark')
+  const [accent, setAccentState] = useState('indigo')
   const [open, setOpen] = useState(false)
   const [mounted, setMounted] = useState(false)
   const ref = useRef(null)
 
-  // 1) Sayfa yüklendiğinde localStorage'dan oku ve uygula
   useEffect(() => {
-    const stored = localStorage.getItem(STORAGE_KEY) || 'dark'
-    setThemeState(stored)
-    applyTheme(stored)
+    const storedTheme = localStorage.getItem(STORAGE_KEY) || 'dark'
+    const storedAccent = localStorage.getItem(ACCENT_KEY) || 'indigo'
+    setThemeState(storedTheme)
+    setAccentState(storedAccent)
+    applyTheme(storedTheme)
+    applyAccent(storedAccent)
     setMounted(true)
   }, [])
 
-  // 2) System seçiliyken OS tema değişikliğini dinle
   useEffect(() => {
     if (!mounted || theme !== 'system') return
     const mq = window.matchMedia('(prefers-color-scheme: dark)')
@@ -55,7 +71,6 @@ export default function ThemeToggle() {
     return () => mq.removeEventListener('change', handler)
   }, [mounted, theme])
 
-  // 3) Dışarı tıklanınca dropdown kapat
   useEffect(() => {
     if (!open) return
     function handleClickOutside(e) {
@@ -69,11 +84,16 @@ export default function ThemeToggle() {
     setThemeState(value)
     localStorage.setItem(STORAGE_KEY, value)
     applyTheme(value)
-    setOpen(false)
   }
 
-  const current = THEMES.find((t) => t.value === theme) || THEMES[2]
-  const CurrentIcon = current.Icon
+  function selectAccent(value) {
+    setAccentState(value)
+    localStorage.setItem(ACCENT_KEY, value)
+    applyAccent(value)
+  }
+
+  const currentAppearance = APPEARANCE.find((t) => t.value === theme) || APPEARANCE[0]
+  const CurrentIcon = currentAppearance.Icon
 
   if (!mounted) {
     return (
@@ -88,38 +108,67 @@ export default function ThemeToggle() {
       <button
         type="button"
         onClick={() => setOpen((o) => !o)}
-        className="flex items-center justify-center rounded-lg border border-foreground/20 p-2 text-foreground/80 transition-colors hover:bg-foreground/5 hover:text-foreground"
-        aria-label="Toggle theme"
+        className="flex items-center justify-center gap-1 rounded-lg border border-foreground/20 p-2 text-foreground/80 transition-colors hover:bg-foreground/5 hover:text-foreground"
+        aria-label="Toggle theme and accent"
         aria-expanded={open}
         aria-haspopup="true"
       >
         <CurrentIcon className="size-5" aria-hidden />
+        <span
+          className="size-4 rounded-full border border-foreground/20"
+          style={{ backgroundColor: ACCENTS.find((a) => a.value === accent)?.color ?? '#6366f1' }}
+          aria-hidden
+        />
         <ChevronDownIcon
-          className={`ml-1 size-4 transition-transform ${open ? 'rotate-180' : ''}`}
+          className={`size-4 transition-transform ${open ? 'rotate-180' : ''}`}
           aria-hidden
         />
       </button>
 
       {open && (
         <div
-          className="absolute right-0 top-full z-50 mt-2 w-40 rounded-lg border border-foreground/10 bg-background py-1 shadow-lg"
-          role="menu"
+          className="absolute right-0 top-full z-50 mt-2 w-56 rounded-lg border border-foreground/10 bg-background py-2 shadow-lg"
+          role="dialog"
+          aria-label="Theme and accent options"
         >
-          {THEMES.map(({ value, label, Icon }) => (
-            <button
-              key={value}
-              type="button"
-              onClick={() => selectTheme(value)}
-              className="flex w-full items-center gap-2 px-3 py-2 text-left text-sm text-foreground transition-colors hover:bg-foreground/5"
-              role="menuitem"
-            >
-              <Icon className="size-4 shrink-0" aria-hidden />
-              {label}
-              {theme === value && (
-                <span className="ml-auto text-xs text-foreground/60">✓</span>
-              )}
-            </button>
-          ))}
+          <p className="px-3 py-1 text-xs font-medium uppercase tracking-wider text-foreground/50">
+            Görünüm
+          </p>
+          <div className="flex flex-col py-1">
+            {APPEARANCE.map(({ value, label, Icon }) => (
+              <button
+                key={value}
+                type="button"
+                onClick={() => selectTheme(value)}
+                className="flex items-center gap-2 px-3 py-2 text-left text-sm text-foreground transition-colors hover:bg-foreground/5"
+              >
+                <Icon className="size-4 shrink-0" aria-hidden />
+                {label}
+                {theme === value && <span className="ml-auto text-foreground/60">✓</span>}
+              </button>
+            ))}
+          </div>
+          <p className="mt-2 border-t border-foreground/10 px-3 pt-2 text-xs font-medium uppercase tracking-wider text-foreground/50">
+            Renk (buton / link)
+          </p>
+          <div className="mt-2 flex flex-wrap gap-2 px-3">
+            {ACCENTS.map(({ value, label, color }) => (
+              <button
+                key={value}
+                type="button"
+                onClick={() => selectAccent(value)}
+                title={label}
+                className={`flex size-8 items-center justify-center rounded-full border-2 transition-transform hover:scale-110 ${
+                  accent === value
+                    ? 'border-foreground ring-2 ring-foreground/20'
+                    : 'border-transparent hover:border-foreground/30'
+                }`}
+                style={{ backgroundColor: color }}
+                aria-label={`Accent ${label}`}
+                aria-pressed={accent === value}
+              />
+            ))}
+          </div>
         </div>
       )}
     </div>

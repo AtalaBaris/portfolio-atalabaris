@@ -37,7 +37,7 @@ export default function Header() {
               <Link
                 key={item.name}
                 href={item.href}
-                className="text-sm font-medium text-foreground/80 transition-colors hover:text-foreground"
+                className="text-sm font-medium text-foreground/80 transition-colors hover:text-accent"
               >
                 {item.name}
               </Link>
@@ -81,7 +81,7 @@ export default function Header() {
               <Link
                 key={item.name}
                 href={item.href}
-                className="rounded-lg px-3 py-2.5 text-base font-medium text-foreground/80 transition-colors hover:bg-foreground/5 hover:text-foreground"
+                className="rounded-lg px-3 py-2.5 text-base font-medium text-foreground/80 transition-colors hover:bg-foreground/5 hover:text-accent"
                 onClick={() => setMobileMenuOpen(false)}
               >
                 {item.name}

@@ -29,6 +29,8 @@ export default function RootLayout({ children }) {
                 var isLight = t === 'light' || (t === 'system' && !window.matchMedia('(prefers-color-scheme: dark)').matches);
                 if (isLight) document.documentElement.classList.add('light');
                 else document.documentElement.classList.remove('light');
+                var a = localStorage.getItem('accent') || 'indigo';
+                document.documentElement.setAttribute('data-accent', a);
               })();
             `,
           }}
