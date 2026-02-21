@@ -3,10 +3,13 @@
 import Link from 'next/link'
 import Hero from '@/components/Hero'
 import ProjectCard from '@/components/ProjectCard'
+import SkillCard from '@/components/SkillCard'
 import { PROJECTS } from '@/data/projects'
+import { SKILLS } from '@/data/skills'
 import { ChevronDownIcon } from '@heroicons/react/24/outline'
 
 const HOME_PROJECTS = PROJECTS.slice(0, 3)
+const HOME_SKILLS = SKILLS.slice(0, 6)
 
 export default function Home() {
   return (
@@ -48,6 +51,43 @@ export default function Home() {
             <ChevronDownIcon className="mr-2 size-4" aria-hidden />
             View All
           </Link>
+          </div>
+        </div>
+      </section>
+
+      <section
+        id="skills"
+        className="w-full py-10 my-14 md:py-14"
+      >
+        <div className="container mx-auto max-w-7xl space-y-8 px-4 sm:px-6 lg:px-8">
+          <div className="flex flex-col items-center space-y-4 text-center">
+            <h2 className="text-3xl font-bold leading-tight tracking-tight text-foreground sm:text-3xl md:text-5xl lg:text-6xl">
+              Skills
+            </h2>
+            <p className="max-w-[32rem] text-base leading-normal text-foreground/70 sm:text-lg sm:leading-7">
+              Key skills that define my professional identity.
+            </p>
+          </div>
+
+          <div className="grid w-full grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            {HOME_SKILLS.map((skill) => (
+              <SkillCard
+                key={skill.id}
+                name={skill.name}
+                description={skill.description}
+                level={skill.level}
+              />
+            ))}
+          </div>
+
+          <div className="flex justify-center pt-2">
+            <Link
+              href="/skills"
+              className="inline-flex items-center justify-center rounded-xl border border-foreground/20 bg-background px-4 py-2 text-sm font-medium text-foreground transition-colors hover:bg-foreground/5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-background"
+            >
+              <ChevronDownIcon className="mr-2 size-4" aria-hidden />
+              View All
+            </Link>
           </div>
         </div>
       </section>
