@@ -13,20 +13,20 @@ export default function Hero() {
       <div className="container mx-auto flex max-w-[64rem] flex-col items-center gap-4 text-center">
         {/* Profile image: replace src with your photo in public/ (e.g. public/profile.jpg) */}
         <div className="-mt-20 mb-0 flex h-24 w-24 items-center justify-center overflow-hidden rounded-full border-4 border-indigo-500 bg-indigo-500/20 md:mb-2 md:h-40 md:w-40">
-          <span className="text-2xl font-bold text-white md:text-4xl">BA</span>
+          <span className="text-2xl font-bold text-foreground md:text-4xl">BA</span>
         </div>
 
-        <h1 className="text-3xl font-bold tracking-tight text-white sm:text-5xl md:text-6xl lg:text-7xl">
+        <h1 className="text-3xl font-bold tracking-tight text-foreground sm:text-5xl md:text-6xl lg:text-7xl">
           Barış Atala
         </h1>
 
-        <h2 className="text-base font-medium text-gray-300 sm:text-xl md:text-xl lg:text-2xl">
+        <h2 className="text-base font-medium text-foreground/80 sm:text-xl md:text-xl lg:text-2xl">
           Founder of AtalaDev
           <br />
           Freelancer Full Stack Developer
         </h2>
 
-        <p className="mt-4 max-w-[42rem] text-center text-sm leading-normal text-gray-400 sm:text-base">
+        <p className="mt-4 max-w-[42rem] text-center text-sm leading-normal text-foreground/70 sm:text-base">
           Software engineer working at the intersection of AI, data, and scalable software systems.
         </p>
 
@@ -34,7 +34,7 @@ export default function Hero() {
           <Link
             href="/about"
             aria-label="View resume"
-            className="inline-flex h-11 items-center justify-center rounded-md bg-indigo-500 px-8 text-sm font-medium text-white transition-colors hover:bg-indigo-600 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500 focus-visible:ring-offset-2 focus-visible:ring-offset-gray-900"
+            className="inline-flex h-11 items-center justify-center rounded-md bg-indigo-500 px-8 text-sm font-medium text-white transition-colors hover:bg-indigo-600 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500 focus-visible:ring-offset-2 focus-visible:ring-offset-background"
           >
             <DocumentTextIcon className="mr-2 size-5" aria-hidden />
             Resume
@@ -42,7 +42,7 @@ export default function Hero() {
           <Link
             href="/contact"
             aria-label="Contact Barış Atala"
-            className="inline-flex h-11 items-center justify-center rounded-md border border-gray-600 bg-gray-800 px-8 text-sm font-medium text-white transition-colors hover:bg-gray-700 hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gray-500 focus-visible:ring-offset-2 focus-visible:ring-offset-gray-900"
+            className="inline-flex h-11 items-center justify-center rounded-md border border-foreground/20 bg-foreground/5 px-8 text-sm font-medium text-foreground transition-colors hover:bg-foreground/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-foreground/30 focus-visible:ring-offset-2 focus-visible:ring-offset-background"
           >
             <PhoneIcon className="mr-2 size-5" aria-hidden />
             Contact
@@ -50,7 +50,7 @@ export default function Hero() {
         </div>
 
         <div className="mt-10">
-          <ChevronDownIcon className="size-6 text-gray-500" aria-hidden />
+          <ChevronDownIcon className="size-6 text-foreground/50" aria-hidden />
         </div>
       </div>
     </section>

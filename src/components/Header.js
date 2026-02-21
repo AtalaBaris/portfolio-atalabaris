@@ -4,6 +4,7 @@ import { useState } from 'react'
 import Link from 'next/link'
 import { Dialog, DialogPanel } from '@headlessui/react'
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline'
+import ThemeToggle from '@/components/ThemeToggle'
 
 const navigation = [
   { name: 'Projects', href: '/projects' },
@@ -23,34 +24,35 @@ export default function Header() {
       >
         <Link
           href="/"
-          className="text-lg font-semibold tracking-tight text-white transition-colors hover:text-gray-200 sm:text-xl"
+          className="text-lg font-semibold tracking-tight text-foreground transition-colors hover:opacity-80 sm:text-xl"
         >
           <span className="sr-only">Home</span>
           Barış Atala
         </Link>
 
-        {/* Desktop nav */}
-        <div className="hidden items-center gap-8 md:flex">
-          {navigation.map((item) => (
-            <Link
-              key={item.name}
-              href={item.href}
-              className="text-sm font-medium text-gray-300 transition-colors hover:text-white"
-            >
-              {item.name}
-            </Link>
-          ))}
+        {/* Desktop nav + theme + mobile menu button */}
+        <div className="flex items-center gap-2 sm:gap-4">
+          <div className="hidden items-center gap-8 md:flex">
+            {navigation.map((item) => (
+              <Link
+                key={item.name}
+                href={item.href}
+                className="text-sm font-medium text-foreground/80 transition-colors hover:text-foreground"
+              >
+                {item.name}
+              </Link>
+            ))}
+          </div>
+          <ThemeToggle />
+          <button
+            type="button"
+            onClick={() => setMobileMenuOpen(true)}
+            className="inline-flex items-center justify-center rounded-md p-2 text-foreground/80 hover:bg-foreground/5 hover:text-foreground md:hidden"
+            aria-label="Open menu"
+          >
+            <Bars3Icon className="size-6" aria-hidden />
+          </button>
         </div>
-
-        {/* Mobile menu button */}
-        <button
-          type="button"
-          onClick={() => setMobileMenuOpen(true)}
-          className="inline-flex items-center justify-center rounded-md p-2 text-gray-300 hover:bg-white/5 hover:text-white md:hidden"
-          aria-label="Open menu"
-        >
-          <Bars3Icon className="size-6" aria-hidden />
-        </button>
       </nav>
 
       {/* Mobile menu */}
@@ -60,7 +62,7 @@ export default function Header() {
           <div className="flex items-center justify-between border-b border-white/10 pb-4">
             <Link
               href="/"
-              className="text-lg font-semibold tracking-tight text-white"
+              className="text-lg font-semibold tracking-tight text-foreground"
               onClick={() => setMobileMenuOpen(false)}
             >
               Barış Atala
@@ -68,7 +70,7 @@ export default function Header() {
             <button
               type="button"
               onClick={() => setMobileMenuOpen(false)}
-              className="rounded-md p-2 text-gray-400 hover:bg-white/5 hover:text-white"
+              className="rounded-md p-2 text-foreground/70 hover:bg-foreground/5 hover:text-foreground"
               aria-label="Close menu"
             >
               <XMarkIcon className="size-6" aria-hidden />
@@ -79,7 +81,7 @@ export default function Header() {
               <Link
                 key={item.name}
                 href={item.href}
-                className="rounded-lg px-3 py-2.5 text-base font-medium text-gray-300 transition-colors hover:bg-white/5 hover:text-white"
+                className="rounded-lg px-3 py-2.5 text-base font-medium text-foreground/80 transition-colors hover:bg-foreground/5 hover:text-foreground"
                 onClick={() => setMobileMenuOpen(false)}
               >
                 {item.name}

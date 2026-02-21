@@ -1,9 +1,19 @@
 @import "tailwindcss";
 
-/* Site-wide colors: single source for background and text */
+/*
+  Theme: tek kaynak. Varsayılan = dark.
+  - :root = koyu tema (varsayılan).
+  - html.light = açık tema (JS ile eklenir/kaldırılır).
+  - "System" seçilince JS, prefers-color-scheme'e göre .light ekler/kaldırır.
+*/
 :root {
   --background: #111827; /* gray-900 */
   --foreground: #ffffff;
+}
+
+html.light {
+  --background: #f9fafb; /* gray-50 */
+  --foreground: #111827;
 }
 
 @theme inline {
