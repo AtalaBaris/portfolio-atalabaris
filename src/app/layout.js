@@ -28,9 +28,46 @@ const caveat = Caveat({
 
 const isMaintenance = process.env.NEXT_PUBLIC_MAINTENANCE_MODE === "true";
 
+const siteUrl =
+  process.env.NEXT_PUBLIC_SITE_URL ||
+  (process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : "https://atalabaris.vercel.app");
+
 export const metadata = {
-  title: isMaintenance ? "Under maintenance — Barış Atala" : "Barış Atala",
-  description: "Software Engineer - Portfolio",
+  metadataBase: new URL(siteUrl),
+  title: {
+    default: isMaintenance ? "Under maintenance — Barış Atala" : "Barış Atala",
+    template: "%s — Barış Atala",
+  },
+  description:
+    "Barış Atala — Software Engineer & Full Stack Developer. Portfolio, projects, experience and contact.",
+  keywords: ["Barış Atala", "portfolio", "software engineer", "full stack", "developer", "Next.js", "React"],
+  authors: [{ name: "Barış Atala", url: siteUrl }],
+  creator: "Barış Atala",
+  openGraph: {
+    type: "website",
+    locale: "en_US",
+    url: siteUrl,
+    siteName: "Barış Atala",
+    title: "Barış Atala — Software Engineer",
+    description: "Portfolio, projects, experience and contact.",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Barış Atala — Software Engineer",
+    description: "Portfolio, projects, experience and contact.",
+  },
+  robots: {
+    index: !isMaintenance,
+    follow: !isMaintenance,
+    googleBot: { index: !isMaintenance, follow: !isMaintenance },
+  },
+  alternates: { canonical: "/" },
+};
+
+export const viewport = {
+  width: "device-width",
+  initialScale: 1,
+  themeColor: [{ media: "(prefers-color-scheme: light)", color: "#f9fafb" }, { media: "(prefers-color-scheme: dark)", color: "#0a0e14" }],
 };
 
 export default function RootLayout({ children }) {
