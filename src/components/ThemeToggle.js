@@ -114,11 +114,7 @@ export default function ThemeToggle() {
         aria-haspopup="true"
       >
         <CurrentIcon className="size-5" aria-hidden />
-        <span
-          className="size-4 rounded-full border border-foreground/20"
-          style={{ backgroundColor: ACCENTS.find((a) => a.value === accent)?.color ?? '#6366f1' }}
-          aria-hidden
-        />
+     
         <ChevronDownIcon
           className={`size-4 transition-transform ${open ? 'rotate-180' : ''}`}
           aria-hidden
