@@ -2,6 +2,7 @@
 
 import { useState } from 'react'
 import ProjectCard from '@/components/ProjectCard'
+import AnimateIn from '@/components/AnimateIn'
 import { ChevronDownIcon } from '@heroicons/react/24/outline'
 import { PROJECTS, TABS } from '@/data/projects'
 
@@ -15,8 +16,8 @@ export default function Projects() {
       : PROJECTS.filter((p) => p.category === activeTab)
 
   return (
-    <main className="container mx-auto max-w-8xl flex-1 px-4 py-8 sm:px-6 lg:px-8">
-      <div className="mt-5 flex flex-col items-start gap-4 md:flex-row md:justify-between md:gap-8">
+    <main className="container mx-auto max-w-7xl flex-1 px-4 py-8 sm:px-6 lg:px-8">
+      <AnimateIn className="mt-5 flex flex-col items-start gap-4 md:flex-row md:justify-between md:gap-8">
         <div className="flex-1 space-y-4">
           <h1 className="inline-block text-4xl font-bold tracking-tight text-foreground lg:text-5xl">
             Projects
@@ -25,7 +26,7 @@ export default function Projects() {
             Showcasing impactful projects and technical achievements.
           </p>
         </div>
-      </div>
+      </AnimateIn>
 
       <hr className="my-6 border-foreground/10" />
 
@@ -98,15 +99,16 @@ export default function Projects() {
         </div>
 
         <div className="mx-auto my-4 grid justify-center gap-4 sm:grid-cols-2 lg:grid-cols-3">
-          {filtered.map((project) => (
-            <ProjectCard
-              key={project.id}
-              title={project.title}
-              description={project.description}
-              tags={project.tags}
-              href={project.href}
-              imageUrl={project.imageUrl}
-            />
+          {filtered.map((project, index) => (
+            <AnimateIn key={project.id} animation="scale-in" delay={index * 0.08}>
+              <ProjectCard
+                title={project.title}
+                description={project.description}
+                tags={project.tags}
+                href={project.href}
+                imageUrl={project.imageUrl}
+              />
+            </AnimateIn>
           ))}
         </div>
 

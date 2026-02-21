@@ -1,5 +1,6 @@
 'use client'
 
+import { useState } from 'react'
 import { CodeBracketIcon } from '@heroicons/react/24/outline'
 
 function StarIcon({ filled = false }) {
@@ -16,14 +17,34 @@ function StarIcon({ filled = false }) {
   )
 }
 
-export default function SkillCard({ name, description, level = 5 }) {
+export default function SkillCard({ name, description, level = 5, logo }) {
+  const [logoError, setLogoError] = useState(false)
+  const showLogo = logo && !logoError
+
+  const logoBox = (
+    <div className="flex size-12 shrink-0 items-center justify-center overflow-hidden rounded-lg border border-foreground/10 bg-foreground/5 p-2">
+      {showLogo ? (
+        // eslint-disable-next-line @next/next/no-img-element
+        <img
+          src={logo}
+          alt=""
+          aria-hidden
+          width={48}
+          height={48}
+          className="size-full object-contain"
+          onError={() => setLogoError(true)}
+        />
+      ) : (
+        <CodeBracketIcon className="size-6 text-foreground/70" aria-hidden />
+      )}
+    </div>
+  )
+
   return (
     <div className="relative overflow-hidden rounded-lg border border-foreground/10 bg-background p-4 transition-colors hover:bg-foreground/[0.02] sm:p-6">
       <div className="flex h-[200px] flex-col justify-between sm:h-[220px]">
         <div className="flex items-start gap-3">
-          <div className="flex size-12 shrink-0 items-center justify-center rounded-lg border border-foreground/10 bg-foreground/5">
-            <CodeBracketIcon className="size-6 text-foreground/70" aria-hidden />
-          </div>
+          {logoBox}
           <div className="min-w-0 flex-1 space-y-2">
             <h3 className="font-bold text-foreground">{name}</h3>
             <p className="text-sm leading-relaxed text-foreground/70">

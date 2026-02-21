@@ -7,8 +7,9 @@
   - "System" seçilince JS, prefers-color-scheme'e göre .light ekler/kaldırır.
   - data-accent = buton/link vurgu rengi (indigo, red, cyan, green, amber, violet, rose).
 */
-:root {
-  --background: #111827; /* gray-900 */
+:root,
+html:not(.light) {
+  --background: #0a0e14; /* dark: mevcut ile siyah arası koyu ton */
   --foreground: #ffffff;
   --accent: #6366f1;
   --accent-foreground: #ffffff;
@@ -17,6 +18,10 @@
 html.light {
   --background: #f9fafb; /* gray-50 */
   --foreground: #111827;
+}
+
+html {
+  scroll-behavior: smooth;
 }
 
 /* Renk modları: buton ve link vurgusu (html üzerinde set edilir) */
@@ -35,12 +40,139 @@ html[data-accent="rose"] { --accent: #e11d48; --accent-foreground: #ffffff; }
   --color-accent-foreground: var(--accent-foreground);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
+  --font-heading: var(--font-heading);
+  --font-handwriting: var(--font-handwriting);
 }
 
 body {
-  background: var(--background);
+  background-color: var(--background);
   color: var(--foreground);
   font-family: var(--font-sans), system-ui, sans-serif;
+}
+
+/* Başlıklar: yazılımcı portfolyosuna uygun ayrı font */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading), var(--font-sans), system-ui, sans-serif;
+}
+
+/* El yazısı fontu (logo / Hero isim) — başlık kuralını ezmek için class */
+.font-handwriting {
+  font-family: var(--font-handwriting), var(--font-sans), cursive, system-ui, sans-serif !important;
+}
+
+/* Header logo: sayfa açılışında z düzleminde büyüyerek gelir */
+@keyframes header-scale-in {
+  from {
+    opacity: 0;
+    transform: scale(0.85);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+.animate-header-scale-in {
+  animation: header-scale-in 0.8s ease-out forwards;
+}
+
+/* Header nav linkleri: soldan sağa merdiven gibi yukarıdan düşer */
+@keyframes header-link-drop {
+  from {
+    opacity: 0;
+    transform: translateY(-16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.animate-header-link-drop {
+  opacity: 0;
+  animation: header-link-drop 0.6s ease-out forwards;
+}
+
+/* Hero aşağı ok: tıklanabilir olduğunu belli eden hafif aşağı-yukarı hareket */
+@keyframes arrow-bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(6px); }
+}
+.arrow-bounce {
+  animation: arrow-bounce 2s ease-in-out infinite;
+}
+
+/* Sağ alt yukarı ok butonu: görünürken animasyon */
+@keyframes scroll-to-top-in {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.scroll-to-top-btn {
+  animation: scroll-to-top-in 0.5s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+/* ========== Site geneli animasyonlar ========== */
+@keyframes fade-in-up {
+  from {
+    opacity: 0;
+    transform: translateY(32px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+@keyframes fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+@keyframes scale-in {
+  from {
+    opacity: 0;
+    transform: scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Scroll'da görününce tetiklenir (AnimateIn ile) */
+.animate-fade-in-up {
+  opacity: 0;
+  transform: translateY(32px);
+}
+.animate-fade-in-up.in-view {
+  animation: fade-in-up 1s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+.animate-fade-in {
+  opacity: 0;
+}
+.animate-fade-in.in-view {
+  animation: fade-in 0.8s ease-out forwards;
+}
+.animate-scale-in {
+  opacity: 0;
+  transform: scale(0.96);
+}
+.animate-scale-in.in-view {
+  animation: scale-in 0.9s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+/* Sayfa açılışında hemen (Hero vb.), delay inline style ile verilir */
+.animate-on-load {
+  opacity: 0;
+  transform: translateY(28px);
+  animation: fade-in-up 1.1s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+/* Dark arka planın tüm bg-background kullanımlarında geçerli olması için */
+.bg-background {
+  background-color: var(--background);
 }
 
 /* Accent renkleri: Tailwind bazen var() üretmeyebildiği için doğrudan sınıflar */

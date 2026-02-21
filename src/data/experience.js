@@ -1,0 +1,40 @@
+export const EXPERIENCES = [
+  {
+    id: '1',
+    title: 'Full Stack Developer',
+    company: 'Freelancer',
+    companyUrl: '',
+    location: 'Remote',
+    dates: '2025 - Present',
+    description:
+    'Custom Web Solutions: Engineered responsive, high-performance web applications using Next.js, React, and Tailwind CSS, focusing on SEO optimization and conversion rates for small-to-medium businesses.',  
+    tags: ['Next.js', 'React', 'Tailwind CSS', 'Supabase','JavaScript',],
+    logo: '/experience/freelancer-logo.png',
+    slug: 'freelancer',
+  },
+  {
+    id: '2',
+    title: 'IT Intern',
+    company: 'TOFAŞ Türk Otomotibil Fabrikası A.Ş.',
+    companyUrl: 'https://www.tofas.com.tr',
+    location: 'Bursa, Turkey',
+    dates: '06/2025 - 07/2025',
+    description:
+      'Collaborated with the IT department to develop a spare parts management web application. Actively contributed to the design of the admin panel and user interface. Gained professional teamwork experience using Agile methodologies and Git version control system',
+    tags: ['TypeScript', 'Angular', '+2 more'],
+    logo: '/experience/tofas-logo.png',
+    slug: 'tofas',
+  },
+  {
+    id: '3',
+    title: 'R&D Intern',
+    company: 'EMKO',
+    companyUrl: '',
+    location: 'Bursa, Turkey',
+    dates: '07/2024 - 08/2024',
+    description: 'Conducted studies on IoT devices, microcontrollers, and PLC systems to developindustrial automation solutions.Supported testing processes of embedded system software and hardware integrations, contributing to production line automation knowledge',
+    tags: ['IoT', 'Python', 'C#',],
+    logo: '/experience/emko-logo.png',
+    slug: 'emko',
+  },
+]

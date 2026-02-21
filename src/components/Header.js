@@ -2,6 +2,7 @@
 
 import { useState } from 'react'
 import Link from 'next/link'
+import { usePathname } from 'next/navigation'
 import { Dialog, DialogPanel } from '@headlessui/react'
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline'
 import ThemeToggle from '@/components/ThemeToggle'
@@ -9,12 +10,15 @@ import ThemeToggle from '@/components/ThemeToggle'
 const navigation = [
   { name: 'Projects', href: '/projects' },
   { name: 'Experience', href: '/experience' },
-  { name: 'About', href: '/about' },
+  { name: 'Skills', href: '/skills' },
   { name: 'Contact', href: '/contact' },
 ]
 
 export default function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
+  const pathname = usePathname()
+
+  const isActive = (href) => pathname === href || (href !== '/' && pathname.startsWith(href + '/'))
 
   return (
     <header className="sticky top-0 z-50 w-full bg-background">
@@ -26,17 +30,23 @@ export default function Header() {
         <div className="flex items-center gap-6 md:gap-8">
           <Link
             href="/"
-            className="text-lg font-semibold tracking-tight text-foreground transition-colors hover:opacity-80 sm:text-xl"
+            className="font-handwriting animate-header-scale-in text-xl font-semibold tracking-tight text-foreground transition-colors hover:opacity-80 sm:text-2xl"
           >
             <span className="sr-only">Home</span>
             Barış Atala
           </Link>
           <div className="hidden items-center gap-6 md:flex md:gap-8">
-            {navigation.map((item) => (
+            {navigation.map((item, index) => (
               <Link
                 key={item.name}
                 href={item.href}
-                className="text-sm font-medium text-foreground/80 transition-colors hover:text-accent"
+                className={`animate-header-link-drop text-sm font-medium transition-colors hover:text-accent ${
+                  isActive(item.href)
+                    ? 'text-foreground text-accent'
+                    : 'text-foreground/80'
+                }`}
+                style={{ animationDelay: `${(index + 1) * 0.14}s` }}
+                aria-current={isActive(item.href) ? 'page' : undefined}
               >
                 {item.name}
               </Link>
@@ -44,13 +54,16 @@ export default function Header() {
           </div>
         </div>
 
-        {/* Theme + mobil menü — sağda */}
+        {/* Theme + mobil menü — sağda, merdiven devamı */}
         <div className="flex items-center gap-2 sm:gap-4">
-          <ThemeToggle />
+          <span className="animate-header-link-drop inline-block" style={{ animationDelay: '0.6s' }}>
+            <ThemeToggle />
+          </span>
           <button
             type="button"
             onClick={() => setMobileMenuOpen(true)}
-            className="inline-flex items-center justify-center rounded-md p-2 text-foreground/80 hover:bg-foreground/5 hover:text-foreground md:hidden"
+            className="animate-header-link-drop inline-flex items-center justify-center rounded-md p-2 text-foreground/80 hover:bg-foreground/5 hover:text-foreground md:hidden"
+            style={{ animationDelay: '0.74s' }}
             aria-label="Open menu"
           >
             <Bars3Icon className="size-6" aria-hidden />
@@ -65,7 +78,7 @@ export default function Header() {
           <div className="flex items-center justify-between border-b border-white/10 pb-4">
             <Link
               href="/"
-              className="text-lg font-semibold tracking-tight text-foreground"
+              className="font-handwriting text-xl font-semibold tracking-tight text-foreground"
               onClick={() => setMobileMenuOpen(false)}
             >
               Barış Atala
@@ -84,8 +97,13 @@ export default function Header() {
               <Link
                 key={item.name}
                 href={item.href}
-                className="rounded-lg px-3 py-2.5 text-base font-medium text-foreground/80 transition-colors hover:bg-foreground/5 hover:text-accent"
+                className={`rounded-lg px-3 py-2.5 text-base font-medium transition-colors hover:bg-foreground/5 hover:text-accent ${
+                  isActive(item.href)
+                    ? 'bg-foreground/10 text-accent'
+                    : 'text-foreground/80'
+                }`}
                 onClick={() => setMobileMenuOpen(false)}
+                aria-current={isActive(item.href) ? 'page' : undefined}
               >
                 {item.name}
               </Link>

@@ -1,6 +1,8 @@
-import { Geist, Geist_Mono } from "next/font/google";
+import { Geist, Geist_Mono, Caveat, Plus_Jakarta_Sans } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/Header";
+import ScrollToTop from "@/components/ScrollToTop";
+import MaintenanceView from "@/components/MaintenanceView";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -12,14 +14,30 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
+const plusJakarta = Plus_Jakarta_Sans({
+  variable: "--font-heading",
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700", "800"],
+});
+
+const caveat = Caveat({
+  weight: ["400", "500", "600", "700"],
+  subsets: ["latin"],
+  variable: "--font-handwriting",
+});
+
+const isMaintenance = process.env.NEXT_PUBLIC_MAINTENANCE_MODE === "true";
+
 export const metadata = {
-  title: "Barış Atala",
+  title: isMaintenance ? "Under maintenance — Barış Atala" : "Barış Atala",
   description: "Software Engineer - Portfolio",
 };
 
 export default function RootLayout({ children }) {
+  const fontVariables = `${geistSans.variable} ${geistMono.variable} ${plusJakarta.variable} ${caveat.variable}`;
+
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang="en" suppressHydrationWarning className={fontVariables}>
       <head>
         <script
           dangerouslySetInnerHTML={{
@@ -36,11 +54,16 @@ export default function RootLayout({ children }) {
           }}
         />
       </head>
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased bg-background font-sans text-foreground`}
-      >
-        <Header />
-        {children}
+      <body className="antialiased bg-background font-sans text-foreground">
+        {isMaintenance ? (
+          <MaintenanceView />
+        ) : (
+          <>
+            <Header />
+            {children}
+            <ScrollToTop />
+          </>
+        )}
       </body>
     </html>
   );
