@@ -5,8 +5,16 @@ const BASE_URL =
   (process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : "https://atalabaris.vercel.app")
 
 import { EXPERIENCES } from '@/data/experience'
+import { PROJECTS } from '@/data/projects'
 
 export default function sitemap() {
+  const projectEntries = PROJECTS.map((p) => ({
+    url: `${BASE_URL}/projects/${p.slug}`,
+    lastModified: new Date(),
+    changeFrequency: 'monthly',
+    priority: 0.8,
+  }))
+
   const experienceEntries = EXPERIENCES.map((exp) => ({
     url: `${BASE_URL}/experience/${exp.slug}`,
     lastModified: new Date(),
@@ -27,6 +35,7 @@ export default function sitemap() {
       changeFrequency: 'weekly',
       priority: 0.9,
     },
+    ...projectEntries,
     {
       url: `${BASE_URL}/experience`,
       lastModified: new Date(),

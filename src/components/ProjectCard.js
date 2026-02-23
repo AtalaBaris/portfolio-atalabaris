@@ -3,7 +3,7 @@
 import Link from 'next/link'
 import { ChevronRightIcon } from '@heroicons/react/24/outline'
 
-export default function ProjectCard({ title, description, tags = [], href = '#', imageUrl }) {
+export default function ProjectCard({ title, description, tags = [], href = '/projects', imageUrl }) {
   const initial = title ? title.charAt(0) : '?'
   return (
     <div className="relative flex h-full flex-col rounded-lg border border-foreground/10 bg-background p-6">
@@ -37,11 +37,12 @@ export default function ProjectCard({ title, description, tags = [], href = '#',
             </span>
           ))}
         </div>
-        <Link href={href} className="mt-auto pt-2">
-          <span className="inline-flex h-10 w-full items-center justify-center rounded-md bg-accent px-4 py-2 text-sm font-medium text-accent-foreground transition-colors hover:opacity-90 sm:w-auto">
-            Read more
-            <ChevronRightIcon className="ml-1 size-4" aria-hidden />
-          </span>
+        <Link
+          href={href && href !== '#' ? href : '/projects'}
+          className="mt-auto inline-flex h-10 w-full items-center justify-center rounded-md bg-accent px-4 py-2 text-sm font-medium text-accent-foreground transition-colors hover:opacity-90 sm:w-auto"
+        >
+          Read more
+          <ChevronRightIcon className="ml-1 size-4" aria-hidden />
         </Link>
       </div>
     </div>

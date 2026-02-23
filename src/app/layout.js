@@ -90,6 +90,7 @@ export default function RootLayout({ children }) {
             `,
           }}
         />
+        <script defer src="https://cloud.umami.is/script.js" data-website-id="d89e21d5-bab2-4162-9c63-a33f66b31879"></script>
       </head>
       <body className="antialiased bg-background font-sans text-foreground">
         {isMaintenance ? (

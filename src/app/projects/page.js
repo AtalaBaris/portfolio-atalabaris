@@ -105,7 +105,7 @@ export default function Projects() {
                 title={project.title}
                 description={project.description}
                 tags={project.tags}
-                href={project.href}
+                href={project.slug ? `/projects/${project.slug}` : project.id ? `/projects/${project.id}` : '/projects'}
                 imageUrl={project.imageUrl}
               />
             </AnimateIn>
