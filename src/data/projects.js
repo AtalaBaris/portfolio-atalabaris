@@ -77,7 +77,6 @@ export const PROJECTS = [
       '/projects/fitt-app/fitt-app-5.jpg',
       '/projects/fitt-app/fitt-app-6.jpg',
       '/projects/fitt-app/fitt-app-7.jpg',
-      '/projects/fitt-app/fitt-app-8.jpg',
     ],
     techStack: ['React.js', 'JavaScript', 'Node.js', 'OpenAI','PostgreSQL'],
     sections: [

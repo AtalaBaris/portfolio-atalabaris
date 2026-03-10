@@ -12,10 +12,14 @@ export default function Hero() {
     <section className="flex min-h-screen w-full items-center bg-background px-6 pb-8 pt-6 md:py-20 lg:py-32">
       <div className="container mx-auto flex max-w-[64rem] flex-col items-center gap-4 text-center">
         <div
-          className="-mt-20 mb-0 flex h-48 w-48 items-center justify-center overflow-hidden rounded-full border-4 border-accent bg-accent/20 md:mb-2 md:h-48 md:w-48 animate-on-load"
+          className="-mt-20 mb-0 flex h-56 w-56 items-center justify-center overflow-hidden rounded-full border-4 border-accent bg-accent/20 md:mb-2 md:h-64 md:w-64 lg:h-72 lg:w-72 animate-on-load"
           style={{ animationDelay: '0.1s' }}
         >
-          <span className="text-2xl font-bold text-foreground md:text-4xl">BA</span>
+          <img
+            src="/profile-photo/profile-photo.jpg"
+            alt="Barış Atala"
+            className="h-full w-full object-cover"
+          />
         </div>
 
         <h1
