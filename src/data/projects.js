@@ -7,11 +7,11 @@ export const TABS = [
 export const PROJECTS = [
   {
     id: '1',
-    slug: 'legaltech-simulation-interface',
-    title: 'LegalTech Simulation Interface',
+    slug: 'leximind',
+    title: 'LexiMind (Internship)',
     description:
-      'Legal tech simulation interface for training and demos. Modern UI with workflow and scenario support.',
-    tags: ['Mobile Dev', 'React Native', 'LegalTech', 'UI/UX'],
+      'Internship project — a legal tech simulation interface for training and demos. Modern UI with workflow and scenario support.',
+    tags: ['Mobile Dev', 'LegalTech', 'UI/UX'],
     category: 'professional',
     imageUrl: '/projects/leximind/project-leximind-1.jpg',
     liveUrl: null,
@@ -25,7 +25,7 @@ export const PROJECTS = [
       {
         title: 'Overview',
         content:
-          'LegalTech Simulation Interface provides a training and demonstration environment for legal workflows and scenarios. Built with a focus on clarity and usability.',
+          'LexiMind provides a training and demonstration environment for legal workflows and scenarios. Built with a focus on clarity and usability.',
       },
       {
         title: 'Features',
@@ -35,46 +35,49 @@ export const PROJECTS = [
     ],
   },
   {
-    id: '3',
-    slug: 'psychology-website',
-    title: 'Psychology Website',
+    id: '2',
+    slug: 'dreamtales',
+    title: 'DreamTales',
     description:
-      'Psychology website for a psychologist. It includes a blog, a contact form, and a about section.',
-    tags: ['CSS','JavaScript', 'Web Dev'],
-    category: 'personal',
-    imageUrl: '/projects/psikoloji/project-psy1.jpg',
+      'AI-driven generative storytelling and voice synthesis. Personalized narratives with real-time TTS for immersive audio experiences.',
+    tags: ['Mobile Dev', 'Full Stack', 'AI Integration'],
+    category: 'professional',
+    imageUrl: '/projects/dream-tales/DreamTales.jpg',
     liveUrl: null,
-    images: ['/projects/psikoloji/project-psy1.jpg', '/projects/psikoloji/project-psy2.jpg',],
-    techStack: ['CSS', 'JavaScript.js'],
+    images: ['/projects/dream-tales/DreamTales.jpg'],
+    techStack: ['Flutter', 'Supabase', 'LLM', 'TTS APIs'],
     sections: [
       {
         title: 'Overview',
-        content: 'Replace with a longer overview of the project and the problem it solves.',
+        content:
+          'DreamTales dynamically crafts personalized stories and converts them into natural-sounding audio using TTS.',
       },
       {
-        title: 'My role',
-        content: 'Describe your responsibilities, key decisions, and outcomes.',
+        title: 'Highlights',
+        content:
+          'Generative story engine, prompt orchestration, and audio playback for narrated experiences.',
       },
     ],
   },
   {
-    id: '2',
+    id: '3',
     slug: 'fitt-app',
     title: 'Fitt App',
     description:
       'Fitness and workout tracking mobile app. Track your exercises, set goals, and stay motivated.',
     tags: ['Web Dev', 'Fitness', 'AI integration'],
     category: 'personal',
-    imageUrl: '/projects/fitt-app/fitt-app-1.jpg',
+    imageUrl: '/projects/fitt-app/fitt-app-1.png',
     liveUrl: null,
     images: [
-      '/projects/fitt-app/fitt-app-1.jpg',
-      '/projects/fitt-app/fitt-app-2.jpg',
-      '/projects/fitt-app/fitt-app-3.jpg',
-      '/projects/fitt-app/fitt-app-4.jpg',
-      '/projects/fitt-app/fitt-app-5.jpg',
-      '/projects/fitt-app/fitt-app-6.jpg',
-      '/projects/fitt-app/fitt-app-7.jpg',
+      '/projects/fitt-app/fitt-app-1.png',
+      '/projects/fitt-app/fitt-app-2.png',
+      '/projects/fitt-app/fitt-app-3.png',
+      '/projects/fitt-app/fitt-app-4.png',
+      '/projects/fitt-app/fitt-app-5.png',
+      '/projects/fitt-app/fitt-app-6.jpeg',
+      '/projects/fitt-app/fitt-app-7.jpeg',
+      '/projects/fitt-app/fitt-app-8.jpeg',
     ],
     techStack: ['React.js', 'JavaScript', 'Node.js', 'OpenAI','PostgreSQL'],
     sections: [
@@ -83,19 +86,19 @@ export const PROJECTS = [
   },
   {
     id: '4',
-    slug: 'dream-tales-app',
-    title: 'AI-Driven Generative Storytelling & Voice Synthesis Engine',
+    slug: 'psychologist-website',
+    title: 'Psychologist Website',
     description:
-      'An innovative mobile platform that leverages generative artificial intelligence to dynamically craft personalized narratives. Integrated with advanced Text-to-Speech (TTS) models, the architecture seamlessly converts dynamically generated text into natural, immersive audio experiences in real-time.',
-    tags: ['Mobile Dev', 'Full Stack', 'AI Integration'],
-    category: 'professional',
-    imageUrl: '/projects/dream-tales/DreamTales.jpg',
+      'Website for a psychologist with services, about section, blog area, and a contact form.',
+    tags: ['Web Dev', 'JavaScript', 'CSS'],
+    category: 'personal',
+    imageUrl: '/projects/psikoloji/project-psy1.jpg',
     liveUrl: null,
-    images: ['/projects/dream-tales/DreamTales.jpg',],
-    techStack: ['Next.js', 'Flutter', 'Supabase', 'LLM', 'Tailwind','TTS APIs'],
+    images: ['/projects/psikoloji/project-psy1.jpg', '/projects/psikoloji/project-psy2.jpg'],
+    techStack: ['HTML', 'CSS', 'JavaScript'],
     sections: [
-      { title: 'Overview', content: 'Describe the app, target users, and main features.' },
-      { title: 'Tech decisions', content: 'Why you chose this stack and how it performed.' },
+      { title: 'Overview', content: 'A clean, responsive website designed to present services and build trust with potential clients.' },
+      { title: 'Features', content: 'Service pages, contact section, and content areas suitable for blog posts and announcements.' },
     ],
   },
   {
