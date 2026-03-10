@@ -9,10 +9,10 @@ import {
 
 export default function Hero() {
   return (
-    <section className="flex min-h-screen w-full items-center bg-background px-6 pb-8 pt-6 md:py-20 lg:py-32">
-      <div className="container mx-auto flex max-w-[64rem] flex-col items-center gap-4 text-center">
+    <section className="flex min-h-screen w-full items-center bg-background px-6 pb-8 pt-24 md:py-20 lg:py-32">
+      <div className="container mx-auto flex max-w-[64rem] flex-col items-center gap-2 text-center md:gap-4">
         <div
-          className="-mt-20 mb-0 flex h-56 w-56 items-center justify-center overflow-hidden rounded-full border-4 border-accent bg-accent/20 md:mb-2 md:h-64 md:w-64 lg:h-72 lg:w-72 animate-on-load"
+          className="mb-0 mt-0 flex h-56 w-56 shrink-0 items-center justify-center overflow-hidden rounded-full border-4 border-accent bg-accent/20 md:-mt-20 md:mb-2 md:h-64 md:w-64 lg:h-72 lg:w-72 animate-on-load"
           style={{ animationDelay: '0.1s' }}
         >
           <img
@@ -23,7 +23,7 @@ export default function Hero() {
         </div>
 
         <h1
-          className="font-handwriting mb-4 text-5xl font-bold tracking-tight text-foreground sm:text-5xl md:text-6xl lg:text-8xl animate-on-load"
+          className="font-handwriting mb-1 text-5xl font-bold tracking-tight text-foreground sm:text-5xl md:mb-4 md:text-6xl lg:text-8xl animate-on-load"
           style={{ animationDelay: '0.28s' }}
         >
           Barış Atala
@@ -39,14 +39,14 @@ export default function Hero() {
         </h2>
 
         <p
-          className="mt-4 max-w-[42rem] text-center text-sm leading-normal text-foreground/70 sm:text-base animate-on-load"
+          className="mt-2 max-w-[42rem] text-center text-sm leading-normal text-foreground/70 sm:text-base md:mt-4 animate-on-load"
           style={{ animationDelay: '0.64s' }}
         >
           Software engineer working at the intersection of AI, data, and scalable software systems.
         </p>
 
         <div
-          className="mt-10 flex flex-col items-center justify-center gap-3 sm:flex-row sm:space-x-4 animate-on-load"
+          className="mt-4 flex flex-col items-center justify-center gap-3 sm:flex-row sm:space-x-4 md:mt-10 animate-on-load"
           style={{ animationDelay: '0.82s' }}
         >
           <a
@@ -69,7 +69,7 @@ export default function Hero() {
         </div>
 
         <div
-          className="mt-10 animate-on-load"
+          className="mt-4 animate-on-load md:mt-10"
           style={{ animationDelay: '1.5s' }}
         >
           <button
