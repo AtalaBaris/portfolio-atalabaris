@@ -7,12 +7,12 @@ export const TABS = [
 export const PROJECTS = [
   {
     id: '1',
-    slug: 'portfolio-website',
-    title: 'Portfolio Website',
+    slug: 'legaltech-simulation-interface',
+    title: 'LegalTech Simulation Interface',
     description:
-      'Open-source Next.js portfolio template. Optimized for SEO and performance, with dark/light theme and accent colors.',
-    tags: ['Web Dev', 'Frontend', 'UI/UX'],
-    category: 'personal',
+      'Legal tech simulation interface for training and demos. Modern UI with workflow and scenario support.',
+    tags: ['Mobile Dev', 'React Native', 'LegalTech', 'UI/UX'],
+    category: 'professional',
     imageUrl: '/projects/leximind/project-leximind-1.jpg',
     liveUrl: null,
     images: [
@@ -20,17 +20,17 @@ export const PROJECTS = [
       '/projects/leximind/projectleximind2.jpg',
       '/projects/leximind/projectleximind3.jpg',
     ],
-    techStack: ['Next.js', 'React', 'Tailwind CSS', 'Vercel'],
+    techStack: ['Node.js', 'React Native','NativeWind(Tailwind)', 'Supabase'],
     sections: [
       {
         title: 'Overview',
         content:
-          'A modern portfolio template built with Next.js App Router. Focus on performance, SEO (sitemap, robots, metadata), and accessibility. Dark/light theme and multiple accent colors.',
+          'LegalTech Simulation Interface provides a training and demonstration environment for legal workflows and scenarios. Built with a focus on clarity and usability.',
       },
       {
         title: 'Features',
         content:
-          'Responsive layout, contact form (Formspree), project and experience listings, skills section, maintenance mode, and PWA-ready manifest.',
+          'Scenario-based simulations, workflow steps, and a clean interface for legal tech demos and training.',
       },
     ],
   },
