@@ -11,6 +11,7 @@ const inputClass =
 
 export default function ContactForm({ idPrefix = '', showFormspreeHint = false, className = '' }) {
   const [status, setStatus] = useState('idle') // 'idle' | 'sending' | 'success' | 'error'
+  const [errorMessage, setErrorMessage] = useState('')
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -28,21 +29,39 @@ export default function ContactForm({ idPrefix = '', showFormspreeHint = false, 
   const handleSubmit = async (e) => {
     e.preventDefault()
     setStatus('sending')
+    setErrorMessage('')
 
     if (FORMSPREE_URL) {
       try {
+        const payload = new FormData()
+        payload.append('name', formData.name)
+        payload.append('email', formData.email)
+        payload.append('subject', formData.subject)
+        payload.append('message', formData.message)
+        // Honeypot for bots (Formspree supports _gotcha)
+        payload.append('_gotcha', '')
+
         const res = await fetch(FORMSPREE_URL, {
           method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(formData),
+          headers: { Accept: 'application/json' },
+          body: payload,
         })
         if (res.ok) {
           setStatus('success')
           setFormData({ name: '', email: '', subject: '', message: '' })
         } else {
+          let msg = 'Something went wrong. Please try again.'
+          try {
+            const data = await res.json()
+            if (typeof data?.error === 'string' && data.error.trim()) msg = data.error
+          } catch {
+            // ignore parse errors
+          }
+          setErrorMessage(msg)
           setStatus('error')
         }
       } catch {
+        setErrorMessage('Network error. Please try again.')
         setStatus('error')
       }
     } else {
@@ -125,7 +144,7 @@ export default function ContactForm({ idPrefix = '', showFormspreeHint = false, 
         )}
         {status === 'error' && (
           <p className="rounded-lg border border-red-500/30 bg-red-500/10 px-4 py-3 text-sm text-red-600 dark:text-red-400">
-            Something went wrong. Please try again or email me directly.
+            {errorMessage || 'Something went wrong. Please try again or email me directly.'}
           </p>
         )}
 
