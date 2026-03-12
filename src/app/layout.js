@@ -63,7 +63,7 @@ export const metadata = {
     card: "summary_large_image",
     title: "Barış Atala — Software Engineer",
     description: "Portfolio, projects, experience and contact.",
-    images: ["/profile-photo/profile-photo.jpg"],
+    images: ["/og-image.jpg"],
   },
   robots: {
     index: !isMaintenance,
