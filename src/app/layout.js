@@ -52,7 +52,7 @@ export const metadata = {
     description: "Portfolio, projects, experience and contact.",
     images: [
       {
-        url: `${siteUrl}/og-image-v2.jpg`,
+        url: `/og-image-v2.jpg`,
         width: 1024,
         height: 768,
         alt: "Barış Atala — Software Engineer",
@@ -63,7 +63,7 @@ export const metadata = {
     card: "summary_large_image",
     title: "Barış Atala — Software Engineer",
     description: "Portfolio, projects, experience and contact.",
-    images: [`${siteUrl}/og-image-v2.jpg`],
+    images: [`/og-image-v2.jpg`],
   },
   robots: {
     index: !isMaintenance,
