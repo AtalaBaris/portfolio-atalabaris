@@ -50,11 +50,20 @@ export const metadata = {
     siteName: "Barış Atala",
     title: "Barış Atala — Software Engineer",
     description: "Portfolio, projects, experience and contact.",
+    images: [
+      {
+        url: "/profile-photo/profile-photo.jpg",
+        width: 1024,
+        height: 768,
+        alt: "Barış Atala — Software Engineer",
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
     title: "Barış Atala — Software Engineer",
     description: "Portfolio, projects, experience and contact.",
+    images: ["/profile-photo/profile-photo.jpg"],
   },
   robots: {
     index: !isMaintenance,
