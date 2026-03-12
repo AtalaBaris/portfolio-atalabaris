@@ -52,7 +52,7 @@ export const metadata = {
     description: "Portfolio, projects, experience and contact.",
     images: [
       {
-        url: "/profile-photo/profile-photo.jpg",
+        url: "/og-image.jpg",
         width: 1024,
         height: 768,
         alt: "Barış Atala — Software Engineer",
