@@ -103,17 +103,17 @@ export const PROJECTS = [
   {
     id: '5',
     slug: 'mobile-app',
-    title: 'Mobile App',
+    title: 'QR Menu And Ordering System',
     description:
-      'Cross-platform mobile application. Add your tech stack and store links here.',
-    tags: ['Mobile Dev', 'Full Stack'],
-    category: 'personal',
+        'Mobile responsive QR menu and ordering system for restaurants and cafes. You can scan the QR code and order your food and drinks, Call a waiter or waitress and pay the check. You can also see the menu and the prices of the food and drinks.',
+    tags: ['Web Dev', 'Next.js', 'Tailwind CSS', 'Python', 'PostgreSQL'],
+    category: 'professional',
     imageUrl: '/projects/project-5.jpg',
     liveUrl: null,
     images: ['/projects/project-5.jpg'],
-    techStack: ['React Native', 'Expo', 'TypeScript'],
+    techStack: ['Next.js', 'React', 'JavaScript', 'Python', 'PostgreSQL'],
     sections: [
-      { title: 'Overview', content: 'Describe the mobile app and its purpose.' },
+      { title: 'Overview', content: 'A mobile responsive QR menu and ordering system for restaurants and cafes. You can scan the QR code and order your food and drinks, Call a waiter or waitress and pay the check. You can also see the menu and the prices of the food and drinks.' },
     ],
   },
   {
